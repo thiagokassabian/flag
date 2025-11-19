@@ -40,13 +40,13 @@ body,
 	min-height: 100dvh;
 }
 
-body {
+/* body {
 	padding-top: 77px;
-}
+} */
 
 header {
 	background-color: var(--bs-primary);
-	position: fixed;
+	position: sticky;
 	top: 0;
 	width: 100%;
 	z-index: 1020;
@@ -106,17 +106,19 @@ header {
 
 main {
 	#hero {
-		height: calc(100dvh - 77px);
+		/* height: calc(100dvh - 77px); */
+		aspect-ratio: 16 / 9;
 		background: url("../img/banner_top-50.jpg") no-repeat center center;
 		background-size: cover;
 		background-attachment: fixed;
 
 		.content {
-			margin-top: 10dvh;
+			margin-top: 100px;
 			/* display: inline-flex;
 			flex-direction: column;
 			background: rgba(0, 0, 0, 0.1);
 			padding: 25px; */
+			top: 100px;
 		}
 
 		.gradient {
@@ -188,6 +190,7 @@ main {
 
 	#solucoes {
 		padding: 100px 0;
+		overflow: hidden;
 
 		.title {
 			font-size: 4.5rem;
@@ -198,7 +201,7 @@ main {
 
 		.list {
 			li {
-				display: flex;
+				/* display: flex; */
 				transition: all 0.5s;
 				transform: scale(1);
 				/* box-shadow: 0; */
@@ -234,7 +237,7 @@ main {
 				}
 
 				.text {
-					padding: 0 10%;
+					padding: 0 5%;
 					display: flex;
 					flex-direction: column;
 					justify-content: center;
@@ -255,8 +258,8 @@ main {
 				}
 
 				&:nth-child(odd) {
+					background-color: var(--bs-primary);
 					.text {
-						background-color: var(--bs-primary);
 						color: #fff;
 
 						.title-solution {
@@ -266,13 +269,13 @@ main {
 				}
 				&:nth-child(even) {
 					flex-direction: row-reverse;
+					background-color: var(--bs-secondary);
 
 					.image {
 						transform: translateX(50px);
 					}
 
 					.text {
-						background-color: var(--bs-secondary);
 						transform: translateX(-50px);
 
 						.title-solution {
@@ -344,11 +347,11 @@ main {
 
 		> .container {
 			padding: 100px 0;
-			display: flex;
+			/* display: flex; */
 
-			> div {
+			/* > div {
 				width: 100%;
-			}
+			} */
 
 			.subtitle {
 				font-size: 5.5rem;
@@ -366,21 +369,19 @@ main {
 		padding: 100px 0;
 
 		.text {
-			text-align: right;
-
 			p {
 				font-size: 2.8rem;
-				
+
 				strong {
 					font-weight: 600;
 				}
 			}
 
 			.btn {
-                font-size: 1.5rem;
-                box-shadow: var(--bs-btn-hover-border-color) 0px 6px 0px 0px;
-                border-color: var(--bs-btn-hover-border-color);
-                border-width: 2px;
+				font-size: 1.5rem;
+				box-shadow: var(--bs-btn-hover-border-color) 0px 6px 0px 0px;
+				border-color: var(--bs-btn-hover-border-color);
+				border-width: 2px;
 				position: relative;
 				top: 0;
 				transition: all 0.2s;
@@ -424,6 +425,9 @@ footer {
 	.redes-sociais {
 		ul {
 			li {
+				a {
+					display: flex;
+				}
 				img {
 					width: 45px;
 				}
@@ -432,10 +436,158 @@ footer {
 	}
 }
 
-@media only screen and (max-device-width: 1366px) {
+@media (max-width: 1399.98px) {
 	main {
-		.hero {
+		#hero {
+			/* height: 850px; */
 			background-attachment: scroll;
 		}
+		#quemsomos {
+			.flag-logo {
+				img {
+					width: 400px;
+				}
+			}
+		}
 	}
+}
+
+@media (max-width: 1199.98px) {
+	main {
+		#hero {
+			.content {
+				margin-top: 80px;
+			}
+			.line-1 {
+				font-size: 2.5rem;
+			}
+			.line-2 {
+				font-size: 8rem;
+			}
+			.line-3 {
+				font-size: 2rem;
+			}
+		}
+	}
+}
+
+@media (max-width: 991.98px) {
+	main {
+		#hero {
+			.content {
+				margin-top: 60px;
+			}
+			.line-1 {
+				font-size: 2rem;
+			}
+			.line-2 {
+				font-size: 7rem;
+			}
+			.line-3 {
+				font-size: 1.5rem;
+			}
+		}
+		#quemsomos {
+			.title {
+				font-size: 3.5rem;
+
+				.emphasis {
+					font-size: 6rem;
+				}
+			}
+			.flag-logo {
+				top: -92px;
+
+				img {
+					width: 300px;
+				}
+			}
+		}
+		#solucoes {
+			.list {
+				li {
+					padding: 50px;
+
+					> div {
+						width: 100%;
+					}
+
+					.image,
+					.text {
+						transform: translateX(0);
+					}
+
+					.text {
+						margin-top: 25px;
+					}
+
+					&:nth-child(even) {
+						.image,
+						.text {
+							transform: translateX(0);
+						}
+					}
+
+					&:hover {
+						transform: scale(1);
+						margin: 0;
+					}
+				}
+			}
+		}
+		#epic-led {
+			.banner {
+				height: 350px;
+
+				.title {
+					font-size: 7rem;
+					bottom: -11px;
+				}
+			}
+			> .container {
+				.subtitle {
+					font-size: 3.5rem;
+					span {
+						display: inline;
+					}
+				}
+			}
+		}
+		#contato {
+			.text {
+				p {
+					font-size: 2.2rem;
+				}
+			}
+			.flag-logo {
+				top: -86px;
+
+				img {
+					width: 280px;
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 767.98px) {
+	main {
+		#hero {
+			.content {
+				margin-top: 0;
+			}
+			.line-1 {
+				font-size: 1.5rem;
+			}
+			.line-2 {
+				font-size: 5.5rem;
+			}
+			.line-3 {
+				font-size: 1.2rem;
+			}
+		}
+	}
+}
+
+@media (max-width: 575.98px) {
 }
