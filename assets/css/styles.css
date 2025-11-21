@@ -70,9 +70,6 @@ header {
 		&:focus {
 			box-shadow: none;
 		}
-
-		.navbar-toggler-icon {
-		}
 	}
 
 	nav {
@@ -118,10 +115,11 @@ header {
 main {
 	#hero {
 		/* height: calc(100dvh - 77px); */
-		aspect-ratio: 16 / 9;
-		background: url("../img/banner_top-50.jpg") no-repeat center center;
+		/* aspect-ratio: 16 / 9; */
+		background: url("../img/banner_top-16-9.jpg") no-repeat center center;
 		background-size: cover;
 		background-attachment: fixed;
+		height: calc(100dvh - 71px);
 
 		.content {
 			/* margin-top: 100px; */
@@ -314,9 +312,11 @@ main {
 		overflow: hidden;
 
 		.banner {
-			background: url("../img/banner_epic_led-50.jpg") no-repeat center center;
+			background: url("../img/banner_epic_led-16-9.jpg") no-repeat center center;
 			background-size: cover;
-			height: 800px;
+			/* aspect-ratio: 16 / 9; */
+			height: calc(60dvh);
+			background-attachment: fixed;
 
 			.gradient {
 				position: absolute;
@@ -459,8 +459,16 @@ footer {
 @media (max-width: 1399.98px) {
 	main {
 		#hero {
-			/* height: 850px; */
 			background-attachment: scroll;
+			height: auto;
+			aspect-ratio: 16 / 9;
+		}
+		#epic-led {
+			.banner {
+				background-attachment: scroll;
+				height: auto;
+				aspect-ratio: 16 / 9;
+			}
 		}
 		#quemsomos {
 			.flag-logo {
@@ -560,8 +568,6 @@ footer {
 		}
 		#epic-led {
 			.banner {
-				height: 250px;
-
 				.title {
 					font-size: 7rem;
 					bottom: -11px;
@@ -636,6 +642,8 @@ footer {
 			}
 		}
 		#quemsomos {
+			padding-block: 80px 50px;
+
 			.title {
 				font-size: 2.5rem;
 
@@ -656,8 +664,20 @@ footer {
 			}
 		}
 		#solucoes {
+			padding-block: 50px;
+
 			.title {
 				font-size: 2.5rem;
+			}
+
+			.list {
+				li {
+					.text {
+						.title-solution {
+							font-size: 1.5rem;
+						}
+					}
+				}
 			}
 		}
 		#epic-led {
@@ -668,6 +688,8 @@ footer {
 				}
 			}
 			> .container {
+				padding-block: 50px 80px;
+
 				.subtitle {
 					font-size: 2.5rem;
 				}
@@ -677,6 +699,8 @@ footer {
 			}
 		}
 		#contato {
+			padding-block: 80px;
+
 			.text {
 				p {
 					font-size: 1.5rem;
@@ -690,6 +714,27 @@ footer {
 
 				img {
 					width: 200px;
+				}
+			}
+		}
+	}
+	footer {
+		padding-block: 50px;
+
+		.contatos {
+			ul {
+				li:not(:last-child) {
+					margin-bottom: 10px;
+				}
+			}
+		}
+
+		.redes-sociais {
+			ul {
+				li {
+					img {
+						width: 35px;
+					}
 				}
 			}
 		}
