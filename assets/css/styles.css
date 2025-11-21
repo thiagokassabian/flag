@@ -64,6 +64,17 @@ header {
 		top: -78px;
 	}
 
+	.navbar-toggler {
+		border: none;
+
+		&:focus {
+			box-shadow: none;
+		}
+
+		.navbar-toggler-icon {
+		}
+	}
+
 	nav {
 		.nav-link {
 			font-weight: 600;
@@ -478,6 +489,11 @@ footer {
 }
 
 @media (max-width: 991.98px) {
+	header {
+		&.hidden {
+			top: 0;
+		}
+	}
 	main {
 		#hero {
 			.content {
@@ -597,8 +613,18 @@ footer {
 	.container {
 		--bs-gutter-x: 2rem;
 	}
+	header {
+		.navbar-brand {
+			img {
+				width: 80px;
+			}
+		}
+	}
 	main {
 		#hero {
+			.content {
+				top: 100px;
+			}
 			.line-1 {
 				font-size: 1rem;
 			}
@@ -629,6 +655,11 @@ footer {
 				}
 			}
 		}
+		#solucoes {
+			.title {
+				font-size: 2.5rem;
+			}
+		}
 		#epic-led {
 			.banner {
 				.title {
@@ -646,21 +677,21 @@ footer {
 			}
 		}
 		#contato {
-            .text {
-                p {
-                    font-size: 1.5rem;
-                }
+			.text {
+				p {
+					font-size: 1.5rem;
+				}
 				.btn {
 					font-size: 1.2rem;
 				}
-            }
+			}
 			.flag-logo {
-                top: -63px;
-				
+				top: -63px;
+
 				img {
 					width: 200px;
 				}
-            }
-        }
+			}
+		}
 	}
 }
