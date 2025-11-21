@@ -576,7 +576,7 @@ footer {
 
 @media (max-width: 991.98px) {
 	header {
-		&.hidden {
+		&.prevent {
 			top: 0;
 		}
 	}

@@ -1,4 +1,3 @@
-
 // Variáveis para controle do scroll
 let headerEl = document.querySelector("header");
 let headerPosition = headerEl.offsetTop;
@@ -15,13 +14,11 @@ function handleHeaderScroll() {
 		isScrollingUp = currentScrollTop < lastScrollTop;
 
 		if (isScrollingUp) {
-			// Scroll para cima - mostra header sticky
-			// headerEl.classList.add("sticky");
+			// Scroll para cima - mostra header
 			headerEl.classList.remove("hidden");
 		} else {
 			// Scroll para baixo - esconde header
 			headerEl.classList.add("hidden");
-			// headerEl.classList.remove("sticky");
 		}
 	} else {
 		// Está no topo da página - remove classes
@@ -69,6 +66,22 @@ function hideHeaderAfterScroll() {
 document.querySelectorAll('header .nav-link').forEach(link => {
 	link.addEventListener('click', function () {
 		hideHeaderAfterScroll();
+	});
+});
+
+// Função para esconder o menu do Bootstrap após clicar em um link
+function closeBootstrapMenu() {
+	const navbarCollapse = document.querySelector('.navbar-collapse.show');
+	if (navbarCollapse) {
+		const bsCollapse = bootstrap.Collapse.getOrCreateInstance(navbarCollapse);
+		bsCollapse.hide();
+	}
+}
+
+// Adiciona o evento para fechar o menu ao clicar em um link do menu
+document.querySelectorAll('header .nav-link').forEach(link => {
+	link.addEventListener('click', function () {
+		closeBootstrapMenu();
 	});
 });
 
@@ -180,3 +193,14 @@ function initMouseFollowElement() {
 
 // Chama a função para inicializar o mouse follow
 initMouseFollowElement();
+
+// Adiciona/remover a classe 'prevent' ao header ao abrir/fechar o menu
+const navbarCollapse = document.querySelector('.navbar-collapse');
+if (navbarCollapse) {
+	navbarCollapse.addEventListener('show.bs.collapse', function () {
+		headerEl.classList.add('prevent');
+	});
+	navbarCollapse.addEventListener('hide.bs.collapse', function () {
+		headerEl.classList.remove('prevent');
+	});
+}
