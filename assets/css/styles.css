@@ -143,10 +143,20 @@ main {
 		[class^="line-"] {
 			line-height: 1;
 			text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+
+			opacity: 0;
+			transform: translateX(-50px);
+			transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+			transition-delay: 0.2s;
+			&.animate {
+				opacity: 1;
+				transform: translateX(0);
+			}
 		}
 		.line-1 {
 			font-size: 3.5rem;
 			font-weight: 600;
+			display: block;
 		}
 		.line-2 {
 			font-style: italic;
@@ -191,6 +201,17 @@ main {
 
 		.text {
 			font-size: 1.25rem;
+
+			p {
+				opacity: 0;
+				transform: translateX(50px);
+				transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+				&.animate {
+					opacity: 1;
+					transform: translateX(0);
+				}
+			}
 		}
 
 		.flag-logo {
@@ -210,6 +231,13 @@ main {
 			font-weight: 300;
 			text-align: center;
 			color: var(--bs-primary);
+			opacity: 0;
+			transform: translateY(-50px);
+			transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+			&.animate {
+				opacity: 1;
+				transform: translateY(0);
+			}
 		}
 
 		.list {
@@ -376,11 +404,30 @@ main {
 
 				span {
 					display: block;
+					opacity: 0;
+					transform: translateX(-50px);
+					transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+					
+					&.animate {
+						opacity: 1;
+						transform: translateX(0);
+					}
 				}
 			}
 
 			.text {
 				font-size: 1.25rem;
+
+				p {
+					opacity: 0;
+					transform: translateX(50px);
+					transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+					&.animate {
+						opacity: 1;
+						transform: translateX(0);
+					}
+				}
 			}
 		}
 	}
@@ -391,6 +438,14 @@ main {
 		.text {
 			p {
 				font-size: 2.8rem;
+				opacity: 0;
+				transform: translateX(50px);
+				transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+				&.animate {
+					opacity: 1;
+					transform: translateX(0);
+				}
 
 				strong {
 					font-weight: 600;
@@ -404,10 +459,17 @@ main {
 				border-width: 2px;
 				position: relative;
 				top: 0;
-				transition: all 0.2s;
+				opacity: 0;
+				transform: translateX(50px);
+				transition: opacity 0.6s ease-out, transform 0.6s ease-out, top 0.2s, box-shadow 0.2s;
+
+				&.animate {
+					opacity: 1;
+					transform: translateX(0);
+				}
 
 				&:hover {
-					top: 4px;
+					top: 5px;
 					box-shadow: none;
 				}
 			}
@@ -416,8 +478,13 @@ main {
 		.flag-logo {
 			top: 80px;
 			left: -50px;
-			transition: transform 0.5s ease-out;
 			transform-origin: center;
+			opacity: 0;
+			transition: transform 0.5s ease-out, opacity 0.6s ease-out;
+
+			&.animate {
+				opacity: 1;
+			}
 		}
 	}
 }
@@ -425,6 +492,17 @@ main {
 footer {
 	background-color: var(--bs-primary);
 	padding: 100px 0;
+
+	[data-animate] {
+		opacity: 0;
+		transform: translateY(50px);
+		transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+		&.animate {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
 
 	.contatos {
 		ul {
@@ -577,7 +655,7 @@ footer {
 				.subtitle {
 					font-size: 3.5rem;
 					span {
-						display: inline;
+						display: inline-block;
 					}
 				}
 			}
