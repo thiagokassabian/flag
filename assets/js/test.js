@@ -4,25 +4,24 @@ let headerPosition = headerEl.offsetTop;
 let lastScrollTop = 0;
 let isScrollingUp = false;
 
-// Função para adicionar sticky class ao header se scroll up e esconder em scroll down
+// Função para mostrar o header em scroll up e esconder em scroll down
 function handleHeaderScroll() {
 	const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-	// Só aplica o efeito se o scroll for maior que 72px
-	if (currentScrollTop > headerPosition && currentScrollTop > 72) {
+	// Só aplica o efeito se o scroll for maior que 62px
+	if (currentScrollTop > headerPosition && currentScrollTop > 62) {
 		// Determina a direção do scroll
 		isScrollingUp = currentScrollTop < lastScrollTop;
 
 		if (isScrollingUp) {
-			// Scroll para cima - mostra header
+			// Scroll para cima - MOSTRA header se scroll > 62px
 			headerEl.classList.remove("hidden");
 		} else {
-			// Scroll para baixo - esconde header
+			// Scroll para baixo - ESCONDE header
 			headerEl.classList.add("hidden");
 		}
 	} else {
-		// Está no topo da página ou menor que 72px - remove classes
-		headerEl.classList.remove("hidden");
+		// Está no topo da página ou menor que 62px - não faz nada
 	}
 
 	// Atualiza a última posição do scroll
@@ -39,6 +38,8 @@ window.addEventListener('scroll', function () {
 		}, 10);
 	}
 });
+
+
 
 // Chama a função uma vez para definir o estado inicial
 handleHeaderScroll();
@@ -204,3 +205,12 @@ if (navbarCollapse) {
 		headerEl.classList.remove('prevent');
 	});
 }
+
+// // Função para logar a quantidade de pixels rolados
+// function logScrollPixels() {
+// 	const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+// 	console.log(`A página rolou ${scrollY}px`);
+// }
+
+// // Adiciona o event listener para logar no scroll
+// window.addEventListener('scroll', logScrollPixels);

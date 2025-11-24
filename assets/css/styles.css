@@ -41,7 +41,7 @@ body,
 }
 
 body {
-	padding-top: 71px;
+	padding-top: 62px;
 }
 
 header {
@@ -52,9 +52,16 @@ header {
 	z-index: 1020;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 	transition: top 0.3s;
+	min-height: 62px;
 
 	&.hidden {
-		top: -72px;
+		top: -62px;
+	}
+
+	.navbar-brand {
+		img {
+			width: 80px;
+		}
 	}
 
 	.navbar-toggler {
@@ -707,13 +714,13 @@ footer {
 	.container {
 		--bs-gutter-x: 2rem;
 	}
-	header {
+	/* header {
 		.navbar-brand {
 			img {
 				width: 80px;
 			}
 		}
-	}
+	} */
 	main {
 		.flag-logo-mobile {
 			top: -58px;
