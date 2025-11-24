@@ -55,7 +55,9 @@
 				</section>
 
 				<div class="position-relative d-lg-none">
-					<div class="flag-logo-mobile top position-absolute z-1" data-animate><img src="assets/svg/flag_logo.svg" alt="flag" width="500" /></div>
+					<div class="flag-logo-mobile top position-absolute z-1" data-animate>
+						<img src="assets/svg/flag_logo.svg" alt="flag" width="500" />
+					</div>
 				</div>
 
 				<!-- Quem somos -->
@@ -86,7 +88,9 @@
 							</p>
 						</div>
 					</div>
-					<div class="flag-logo position-absolute d-none d-lg-block" data-animate><img src="assets/svg/flag_logo.svg" alt="flag" width="500" /></div>
+					<div class="flag-logo position-absolute d-none d-lg-block" data-animate>
+						<img src="assets/svg/flag_logo.svg" alt="flag" width="500" />
+					</div>
 				</section>
 
 				<!-- Soluções -->
@@ -96,7 +100,35 @@
 						<ul class="list-unstyled d-lg-flex flex-lg-column list mb-0">
 							<li class="d-lg-flex" data-animate>
 								<div class="image">
-									<img src="assets/img/solucoes_frontlight-50.jpg" alt="Front-light" />
+									<!-- <img src="assets/img/solucoes_frontlight-50.jpg" alt="Front-light" /> -->
+
+									<div id="carouselFrontlight" class="carousel slide carousel-fade" data-bs-ride="carousel">
+										<div class="carousel-inner">
+											<div class="carousel-item active">
+												<img src="assets/img/solucoes_frontlight-50.jpg" alt="Front-light" class="d-block w-100" />
+											</div>
+											<div class="carousel-item">
+												<img
+													src="assets/img/solucoes_circuito_gastronomico-50.jpg"
+													alt="Circuito Gastronômico"
+													class="d-block w-100" />
+											</div>
+											<div class="carousel-item">
+												<img
+													src="assets/img/solucoes_circuito_condominios-50.jpg"
+													alt="Circuito Condomínios"
+													class="d-block w-100" />
+											</div>
+										</div>
+										<button class="carousel-control-prev" type="button" data-bs-target="#carouselFrontlight" data-bs-slide="prev">
+											<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+											<span class="visually-hidden">Previous</span>
+										</button>
+										<button class="carousel-control-next" type="button" data-bs-target="#carouselFrontlight" data-bs-slide="next">
+											<span class="carousel-control-next-icon" aria-hidden="true"></span>
+											<span class="visually-hidden">Next</span>
+										</button>
+									</div>
 								</div>
 								<div class="text">
 									<h3 class="title-solution">Front-light</h3>
@@ -109,7 +141,41 @@
 							</li>
 							<li class="d-lg-flex" data-animate>
 								<div class="image">
-									<img src="assets/img/solucoes_circuito_gastronomico-50.jpg" alt="Front-light" />
+									<div id="carouselGastronomico" class="carousel slide carousel-fade" data-bs-ride="carousel">
+										<div class="carousel-inner">
+											<div class="carousel-item active">
+												<img
+													src="assets/img/solucoes_circuito_gastronomico-50.jpg"
+													alt="Circuito Gastronômico"
+													class="d-block w-100" />
+											</div>
+											<div class="carousel-item">
+												<img src="assets/img/solucoes_frontlight-50.jpg" alt="Front-light" class="d-block w-100" />
+											</div>
+											<div class="carousel-item">
+												<img
+													src="assets/img/solucoes_circuito_condominios-50.jpg"
+													alt="Circuito Condomínios"
+													class="d-block w-100" />
+											</div>
+										</div>
+										<button
+											class="carousel-control-prev"
+											type="button"
+											data-bs-target="#carouselGastronomico"
+											data-bs-slide="prev">
+											<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+											<span class="visually-hidden">Previous</span>
+										</button>
+										<button
+											class="carousel-control-next"
+											type="button"
+											data-bs-target="#carouselGastronomico"
+											data-bs-slide="next">
+											<span class="carousel-control-next-icon" aria-hidden="true"></span>
+											<span class="visually-hidden">Next</span>
+										</button>
+									</div>
 								</div>
 								<div class="text">
 									<h3 class="title-solution">
@@ -128,7 +194,41 @@
 							</li>
 							<li class="d-lg-flex" data-animate>
 								<div class="image">
-									<img src="assets/img/solucoes_circuito_condominios-50.jpg" alt="Front-light" />
+									<div id="carouselCondominios" class="carousel slide carousel-fade" data-bs-ride="carousel">
+										<div class="carousel-inner">
+											<div class="carousel-item active">
+												<img
+													src="assets/img/solucoes_circuito_condominios-50.jpg"
+													alt="Circuito Condomínios"
+													class="d-block w-100" />
+											</div>
+											<div class="carousel-item">
+												<img src="assets/img/solucoes_frontlight-50.jpg" alt="Front-light" class="d-block w-100" />
+											</div>
+											<div class="carousel-item">
+												<img
+													src="assets/img/solucoes_circuito_gastronomico-50.jpg"
+													alt="Circuito Gastronômico"
+													class="d-block w-100" />
+											</div>
+										</div>
+										<button
+											class="carousel-control-prev"
+											type="button"
+											data-bs-target="#carouselCondominios"
+											data-bs-slide="prev">
+											<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+											<span class="visually-hidden">Previous</span>
+										</button>
+										<button
+											class="carousel-control-next"
+											type="button"
+											data-bs-target="#carouselCondominios"
+											data-bs-slide="next">
+											<span class="carousel-control-next-icon" aria-hidden="true"></span>
+											<span class="visually-hidden">Next</span>
+										</button>
+									</div>
 								</div>
 								<div class="text">
 									<h3 class="title-solution">
@@ -141,7 +241,40 @@
 							</li>
 							<li class="d-lg-flex" data-animate>
 								<div class="image">
-									<img src="assets/img/solucoes_circuito_predios_executivos-50.jpg" alt="Front-light" />
+									
+
+									<div id="carouselPrediosExecutivos" class="carousel slide carousel-fade" data-bs-ride="carousel">
+										<div class="carousel-inner">
+											<div class="carousel-item active">
+												<img src="assets/img/solucoes_circuito_predios_executivos-50.jpg" alt="Circuito Prédios Executivos" class="d-block w-100" />
+											</div>
+											<div class="carousel-item">
+												<img src="assets/img/solucoes_frontlight-50.jpg" alt="Front-light" class="d-block w-100" />
+											</div>
+											<div class="carousel-item">
+												<img
+													src="assets/img/solucoes_circuito_gastronomico-50.jpg"
+													alt="Circuito Gastronômico"
+													class="d-block w-100" />
+											</div>
+										</div>
+										<button
+											class="carousel-control-prev"
+											type="button"
+											data-bs-target="#carouselPrediosExecutivos"
+											data-bs-slide="prev">
+											<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+											<span class="visually-hidden">Previous</span>
+										</button>
+										<button
+											class="carousel-control-next"
+											type="button"
+											data-bs-target="#carouselPrediosExecutivos"
+											data-bs-slide="next">
+											<span class="carousel-control-next-icon" aria-hidden="true"></span>
+											<span class="visually-hidden">Next</span>
+										</button>
+									</div>
 								</div>
 								<div class="text">
 									<h3 class="title-solution">
@@ -212,11 +345,15 @@
 						</div>
 					</div>
 
-					<div class="flag-logo position-absolute d-none d-lg-block" data-animate><img src="assets/svg/flag_logo.svg" alt="flag" width="400" /></div>
+					<div class="flag-logo position-absolute d-none d-lg-block" data-animate>
+						<img src="assets/svg/flag_logo.svg" alt="flag" width="400" />
+					</div>
 				</section>
 
 				<div class="position-relative d-lg-none">
-					<div class="flag-logo-mobile position-absolute z-1" data-animate><img src="assets/svg/flag_logo.svg" alt="flag" width="400" /></div>
+					<div class="flag-logo-mobile position-absolute z-1" data-animate>
+						<img src="assets/svg/flag_logo.svg" alt="flag" width="400" />
+					</div>
 				</div>
 			</main>
 
