@@ -41,7 +41,7 @@ body,
 }
 
 body {
-	padding-top: 50px;
+	padding-top: 71px;
 }
 
 header {
@@ -112,7 +112,7 @@ main {
 		background: url("../img/banner_top-16-9.jpg") no-repeat center center;
 		background-size: cover;
 		background-attachment: fixed;
-		height: calc(100dvh - 72px);
+		height: calc(100dvh - 71px);
 
 		.content {
 			top: 225px;
@@ -203,8 +203,8 @@ main {
 		}
 
 		.flag-logo {
-			top: 40px;
-			left: -50px;
+			top: -60px;
+			left: -70px;
 			transition: transform 0.5s ease-out;
 			transform-origin: center;
 		}
