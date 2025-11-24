@@ -40,28 +40,21 @@ body,
 	min-height: 100dvh;
 }
 
-/* body {
-	padding-top: 77px;
-} */
+body {
+	padding-top: 50px;
+}
 
 header {
 	background-color: var(--bs-primary);
-	position: sticky;
+	position: fixed;
 	top: 0;
 	width: 100%;
 	z-index: 1020;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 	transition: top 0.3s;
 
-	/* &.sticky {
-		position: sticky;
-		top: 0;
-		z-index: 1020;
-		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-	} */
-
 	&.hidden {
-		top: -78px;
+		top: -72px;
 	}
 
 	.navbar-toggler {
@@ -119,14 +112,9 @@ main {
 		background: url("../img/banner_top-16-9.jpg") no-repeat center center;
 		background-size: cover;
 		background-attachment: fixed;
-		height: calc(100dvh - 71px);
+		height: calc(100dvh - 50px);
 
 		.content {
-			/* margin-top: 100px; */
-			/* display: inline-flex;
-			flex-direction: column;
-			background: rgba(0, 0, 0, 0.1);
-			padding: 25px; */
 			top: 225px;
 		}
 
@@ -215,7 +203,7 @@ main {
 		}
 
 		.flag-logo {
-			top: -40px;
+			top: 40px;
 			left: -50px;
 			transition: transform 0.5s ease-out;
 			transform-origin: center;
@@ -242,16 +230,12 @@ main {
 
 		.list {
 			li {
-				/* display: flex; */
 				transition: all 0.5s;
 				transform: scale(1);
-				/* box-shadow: 0; */
 				margin: 0;
 
 				&:hover {
-					/* box-shadow: 1px 1px 14px 9px rgba(0, 0, 0, 0.2); */
 					transform: scale(1.05);
-					/* z-index: 1; */
 					margin: 13px 0;
 				}
 
@@ -391,11 +375,6 @@ main {
 
 		> .container {
 			padding-block: 100px;
-			/* display: flex; */
-
-			/* > div {
-				width: 100%;
-			} */
 
 			.subtitle {
 				font-size: 5.5rem;
@@ -407,7 +386,7 @@ main {
 					opacity: 0;
 					transform: translateX(-50px);
 					transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-					
+
 					&.animate {
 						opacity: 1;
 						transform: translateX(0);
@@ -540,6 +519,10 @@ footer {
 			background-attachment: scroll;
 			height: auto;
 			aspect-ratio: 16 / 9;
+
+			.content {
+				top: 175px;
+			}
 		}
 		#epic-led {
 			.banner {
@@ -552,6 +535,26 @@ footer {
 			.flag-logo {
 				img {
 					width: 400px;
+				}
+			}
+		}
+		#epic-led {
+			.banner {
+				.title {
+					font-size: 12rem;
+					bottom: -18px;
+				}
+			}
+		}
+		#contato {
+			.text {
+				p {
+					font-size: 2.2rem;
+				}
+			}
+			.flag-logo {
+				img {
+					width: 300px;
 				}
 			}
 		}
@@ -581,9 +584,21 @@ footer {
 		}
 	}
 	main {
+		.flag-logo-mobile {
+			top: -87px;
+			left: -30px;
+
+			img {
+				width: 280px;
+			}
+		}
+
+		section:not(#hero) {
+			overflow: hidden;
+		}
 		#hero {
 			.content {
-				top: 180px;
+				top: 130px;
 			}
 			.line-1 {
 				font-size: 2rem;
@@ -661,11 +676,6 @@ footer {
 			}
 		}
 		#contato {
-			.text {
-				p {
-					font-size: 2.2rem;
-				}
-			}
 			.flag-logo {
 				top: -86px;
 
@@ -705,6 +715,14 @@ footer {
 		}
 	}
 	main {
+		.flag-logo-mobile {
+			top: -58px;
+			left: -30px;
+
+			img {
+				width: 190px;
+			}
+		}
 		#hero {
 			.content {
 				top: 100px;
