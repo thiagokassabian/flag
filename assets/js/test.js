@@ -8,8 +8,8 @@ let isScrollingUp = false;
 function handleHeaderScroll() {
 	const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-	// Verifica se rolou para baixo da posição inicial do header
-	if (currentScrollTop > headerPosition) {
+	// Só aplica o efeito se o scroll for maior que 72px
+	if (currentScrollTop > headerPosition && currentScrollTop > 72) {
 		// Determina a direção do scroll
 		isScrollingUp = currentScrollTop < lastScrollTop;
 
@@ -21,7 +21,7 @@ function handleHeaderScroll() {
 			headerEl.classList.add("hidden");
 		}
 	} else {
-		// Está no topo da página - remove classes
+		// Está no topo da página ou menor que 72px - remove classes
 		headerEl.classList.remove("hidden");
 	}
 
