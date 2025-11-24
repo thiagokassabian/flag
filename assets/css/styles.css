@@ -722,6 +722,14 @@ footer {
 			img {
 				width: 190px;
 			}
+
+			&.top {
+				top: -43px;
+
+				img {
+					width: 140px;
+				}
+			}
 		}
 		#hero {
 			.content {
