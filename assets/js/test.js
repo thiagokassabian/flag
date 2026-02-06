@@ -6,6 +6,11 @@ let isScrollingUp = false;
 
 // Função para mostrar o header em scroll up e esconder em scroll down
 function handleHeaderScroll() {
+	if (headerEl.classList.contains("prevent")) {
+		headerEl.classList.remove("hidden");
+		return;
+	}
+
 	const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
 	// Só aplica o efeito se o scroll for maior que 62px
@@ -200,6 +205,7 @@ const navbarCollapse = document.querySelector('.navbar-collapse');
 if (navbarCollapse) {
 	navbarCollapse.addEventListener('show.bs.collapse', function () {
 		headerEl.classList.add('prevent');
+		headerEl.classList.remove("hidden");
 	});
 	navbarCollapse.addEventListener('hide.bs.collapse', function () {
 		headerEl.classList.remove('prevent');
