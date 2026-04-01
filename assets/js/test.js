@@ -4,92 +4,92 @@ let headerPosition = headerEl.offsetTop;
 let lastScrollTop = 0;
 let isScrollingUp = false;
 
-// Função para mostrar o header em scroll up e esconder em scroll down
-function handleHeaderScroll() {
-	if (headerEl.classList.contains("prevent")) {
-		headerEl.classList.remove("hidden");
-		return;
-	}
+// // Função para mostrar o header em scroll up e esconder em scroll down
+// function handleHeaderScroll() {
+// 	if (headerEl.classList.contains("prevent")) {
+// 		headerEl.classList.remove("hidden");
+// 		return;
+// 	}
 
-	const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+// 	const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-	// Só aplica o efeito se o scroll for maior que 62px
-	if (currentScrollTop > headerPosition && currentScrollTop > 62) {
-		// Determina a direção do scroll
-		isScrollingUp = currentScrollTop < lastScrollTop;
+// 	// Só aplica o efeito se o scroll for maior que 62px
+// 	if (currentScrollTop > headerPosition && currentScrollTop > 62) {
+// 		// Determina a direção do scroll
+// 		isScrollingUp = currentScrollTop < lastScrollTop;
 
-		if (isScrollingUp) {
-			// Scroll para cima - MOSTRA header se scroll > 62px
-			headerEl.classList.remove("hidden");
-		} else {
-			// Scroll para baixo - ESCONDE header
-			headerEl.classList.add("hidden");
-		}
-	} else {
-		// Está no topo da página ou menor que 62px - não faz nada
-	}
+// 		if (isScrollingUp) {
+// 			// Scroll para cima - MOSTRA header se scroll > 62px
+// 			headerEl.classList.remove("hidden");
+// 		} else {
+// 			// Scroll para baixo - ESCONDE header
+// 			headerEl.classList.add("hidden");
+// 		}
+// 	} else {
+// 		// Está no topo da página ou menor que 62px - não faz nada
+// 	}
 
-	// Atualiza a última posição do scroll
-	lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
-}
+// 	// Atualiza a última posição do scroll
+// 	lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
+// }
 
-// Event listener para o scroll com throttling para melhor performance
-let scrollTimeout;
-window.addEventListener('scroll', function () {
-	if (!scrollTimeout) {
-		scrollTimeout = setTimeout(function () {
-			handleHeaderScroll();
-			scrollTimeout = null;
-		}, 10);
-	}
-});
+// // Event listener para o scroll com throttling para melhor performance
+// let scrollTimeout;
+// window.addEventListener('scroll', function () {
+// 	if (!scrollTimeout) {
+// 		scrollTimeout = setTimeout(function () {
+// 			handleHeaderScroll();
+// 			scrollTimeout = null;
+// 		}, 10);
+// 	}
+// });
 
 
 
-// Chama a função uma vez para definir o estado inicial
-handleHeaderScroll();
+// // Chama a função uma vez para definir o estado inicial
+// handleHeaderScroll();
 
-// Função para detectar quando o scroll terminou e esconder o header
-function hideHeaderAfterScroll() {
-	let scrollEndTimer;
+// // Função para detectar quando o scroll terminou e esconder o header
+// function hideHeaderAfterScroll() {
+// 	let scrollEndTimer;
 
-	return new Promise((resolve) => {
-		const checkScrollEnd = () => {
-			clearTimeout(scrollEndTimer);
-			scrollEndTimer = setTimeout(() => {
-				headerEl.classList.add("hidden");
-				window.removeEventListener('scroll', checkScrollEnd);
-				resolve();
-			}, 150); // Espera 150ms após o último evento de scroll
-		};
+// 	return new Promise((resolve) => {
+// 		const checkScrollEnd = () => {
+// 			clearTimeout(scrollEndTimer);
+// 			scrollEndTimer = setTimeout(() => {
+// 				headerEl.classList.add("hidden");
+// 				window.removeEventListener('scroll', checkScrollEnd);
+// 				resolve();
+// 			}, 150); // Espera 150ms após o último evento de scroll
+// 		};
 
-		window.addEventListener('scroll', checkScrollEnd);
-		checkScrollEnd(); // Chama imediatamente caso já esteja no destino
-	});
-}
+// 		window.addEventListener('scroll', checkScrollEnd);
+// 		checkScrollEnd(); // Chama imediatamente caso já esteja no destino
+// 	});
+// }
 
-// Esconder o header quando clicar nos links de navegação
-document.querySelectorAll('header .nav-link').forEach(link => {
-	link.addEventListener('click', function () {
-		hideHeaderAfterScroll();
-	});
-});
+// // Esconder o header quando clicar nos links de navegação
+// document.querySelectorAll('header .nav-link').forEach(link => {
+// 	link.addEventListener('click', function () {
+// 		hideHeaderAfterScroll();
+// 	});
+// });
 
-// Função para esconder o menu do Bootstrap após clicar em um link
-function closeBootstrapMenu() {
-	const navbarCollapse = document.querySelector('.navbar-collapse.show');
-	if (navbarCollapse) {
-		const bsCollapse = bootstrap.Collapse.getOrCreateInstance(navbarCollapse);
-		bsCollapse.hide();
-	}
-}
+// // Função para esconder o menu do Bootstrap após clicar em um link
+// function closeBootstrapMenu() {
+// 	const navbarCollapse = document.querySelector('.navbar-collapse.show');
+// 	if (navbarCollapse) {
+// 		const bsCollapse = bootstrap.Collapse.getOrCreateInstance(navbarCollapse);
+// 		bsCollapse.hide();
+// 	}
+// }
 
-// Adiciona o evento para fechar o menu ao clicar em um link do menu
-document.querySelectorAll('header .nav-link').forEach(link => {
-	link.addEventListener('click', function () {
-		closeBootstrapMenu();
-	});
-});
+// // Adiciona o evento para fechar o menu ao clicar em um link do menu
+// document.querySelectorAll('header .nav-link').forEach(link => {
+// 	link.addEventListener('click', function () {
+// 		closeBootstrapMenu();
+// 	});
+// });
 
 // Função para fazer scroll suave para o topo da página
 function scrollToTop() {

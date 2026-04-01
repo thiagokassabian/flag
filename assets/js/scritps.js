@@ -5,54 +5,105 @@ let headerPosition = headerEl.offsetTop;
 let lastScrollTop = 0;
 let isScrollingUp = false;
 
-// Função para adicionar sticky class ao header se scroll up e esconder em scroll down
-function handleHeaderScroll() {
-    const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    
-    // Verifica se rolou para baixo da posição inicial do header
-    if (currentScrollTop > headerPosition) {
-        // Determina a direção do scroll
-        isScrollingUp = currentScrollTop < lastScrollTop;
-        
-        if (isScrollingUp) {
-            // Scroll para cima - mostra header sticky
-            // headerEl.classList.add("sticky");
-            headerEl.classList.remove("hidden");
-        } else {
-            // Scroll para baixo - esconde header
-            headerEl.classList.add("hidden");
-            // headerEl.classList.remove("sticky");
-        }
-    } else {
-        // Está no topo da página - remove classes
-        headerEl.classList.remove("hidden");
-    }
-    
-    // Atualiza a última posição do scroll
-    lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
+// // Função para adicionar sticky class ao header se scroll up e esconder em scroll down
+// function handleHeaderScroll() {
+//     const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+//     // Verifica se rolou para baixo da posição inicial do header
+//     if (currentScrollTop > headerPosition) {
+//         // Determina a direção do scroll
+//         isScrollingUp = currentScrollTop < lastScrollTop;
+
+//         if (isScrollingUp) {
+//             // Scroll para cima - mostra header sticky
+//             // headerEl.classList.add("sticky");
+//             headerEl.classList.remove("hidden");
+//         } else {
+//             // Scroll para baixo - esconde header
+//             headerEl.classList.add("hidden");
+//             // headerEl.classList.remove("sticky");
+//         }
+//     } else {
+//         // Está no topo da página - remove classes
+//         headerEl.classList.remove("hidden");
+//     }
+
+//     // Atualiza a última posição do scroll
+//     lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
+// }
+
+// // Event listener para o scroll com throttling para melhor performance
+// let scrollTimeout;
+// window.addEventListener('scroll', function() {
+//     if (!scrollTimeout) {
+//         scrollTimeout = setTimeout(function() {
+//             handleHeaderScroll();
+//             scrollTimeout = null;
+//         }, 10);
+//     }
+// });
+
+// // Chama a função uma vez para definir o estado inicial
+// handleHeaderScroll();
+
+// // Esconder o header quando clicar nos links de navegação
+// document.querySelectorAll('header .nav-link').forEach(link => {
+//     link.addEventListener('click', function() {
+//         setTimeout(() => {
+//             headerEl.classList.add("hidden");
+//         }, 800);
+//     });
+// });
+
+// // Função para detectar quando o scroll terminou e esconder o header
+// function hideHeaderAfterScroll() {
+//     let scrollEndTimer;
+//
+//     return new Promise((resolve) => {
+//         const checkScrollEnd = () => {
+//             clearTimeout(scrollEndTimer);
+//             scrollEndTimer = setTimeout(() => {
+//                 headerEl.classList.add("hidden");
+//                 window.removeEventListener('scroll', checkScrollEnd);
+//                 resolve();
+//             }, 150); // Espera 150ms após o último evento de scroll
+//         };
+//
+//         window.addEventListener('scroll', checkScrollEnd);
+//         checkScrollEnd(); // Chama imediatamente caso já esteja no destino
+//     });
+// }
+
+// // Esconder o header quando clicar nos links de navegação
+// document.querySelectorAll('header .nav-link').forEach(link => {
+//     link.addEventListener('click', function () {
+//         hideHeaderAfterScroll();
+//     });
+// });
+
+// // Função para logar a quantidade de pixels rolados
+// function logScrollPixels() {
+//     const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+//     console.log(`A página rolou ${scrollY}px`);
+// }
+
+// // Adiciona o event listener para logar no scroll
+// window.addEventListener('scroll', logScrollPixels);
+
+// Função para esconder o menu do Bootstrap após clicar em um link
+function closeBootstrapMenu() {
+	const navbarCollapse = document.querySelector('.navbar-collapse.show');
+	if (navbarCollapse) {
+		const bsCollapse = bootstrap.Collapse.getOrCreateInstance(navbarCollapse);
+		bsCollapse.hide();
+	}
 }
 
-// Event listener para o scroll com throttling para melhor performance
-let scrollTimeout;
-window.addEventListener('scroll', function() {
-    if (!scrollTimeout) {
-        scrollTimeout = setTimeout(function() {
-            handleHeaderScroll();
-            scrollTimeout = null;
-        }, 10);
-    }
-});
-
-// Chama a função uma vez para definir o estado inicial
-handleHeaderScroll();
-
-// Esconder o header quando clicar nos links de navegação
+// Adiciona o evento para fechar o menu ao clicar em um link do menu
 document.querySelectorAll('header .nav-link').forEach(link => {
-    link.addEventListener('click', function() {
-        setTimeout(() => {
-            headerEl.classList.add("hidden");
-        }, 800);
-    });
+	link.addEventListener('click', function () {
+		closeBootstrapMenu();
+	});
 });
 
 // Função para fazer scroll suave para o topo da página
@@ -80,6 +131,48 @@ function initScrollToTopButtons() {
 
 // Chama a função para configurar os botões de scroll to top
 initScrollToTopButtons();
+
+// Ajusta o scroll para âncoras internas levando em conta a altura do header fixo
+function initAnchorScrollOffset() {
+	const header = document.querySelector('header');
+	const getHeaderHeight = () => {
+		if (!header) return 0;
+		const cssHeight = getComputedStyle(document.documentElement).getPropertyValue('--header-height');
+		const parsed = parseInt(cssHeight, 10);
+		if (!isNaN(parsed) && parsed > 0) {
+			return parsed;
+		}
+		return header.offsetHeight;
+	};
+
+	document.querySelectorAll('a[href^="#"]').forEach(link => {
+		const hash = link.getAttribute('href');
+
+		if (!hash || hash === '#' || hash.startsWith('#!')) return;
+
+		link.addEventListener('click', event => {
+			const targetId = hash.replace('#', '');
+			const targetEl = document.getElementById(targetId);
+
+			if (!targetEl) return;
+
+			event.preventDefault();
+
+			// Use a altura base fixa do header para evitar excesso de deslocamento quando o menu mobile está expandido
+			const offset = getHeaderHeight();
+			const targetTop = targetEl.getBoundingClientRect().top + window.scrollY;
+
+			window.scrollTo({
+				top: targetTop - offset,
+				behavior: 'smooth'
+			});
+
+			history.replaceState(null, '', `#${targetId}`);
+		});
+	});
+}
+
+initAnchorScrollOffset();
 
 // Função para adicionar classe animate quando elementos estiverem visíveis na tela
 function initAnimateOnScroll() {

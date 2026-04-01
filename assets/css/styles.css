@@ -8,6 +8,7 @@
 	--bs-body-bg: #e6e6e6;
 	--bs-primary-rgb: 100, 14, 176;
 	--bs-secondary-rgb: 220, 242, 78;
+	--header-height: 62px;
 }
 
 .btn-primary {
@@ -52,7 +53,7 @@ header {
 	z-index: 1020;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 	transition: top 0.3s;
-	min-height: 62px;
+	min-height: var(--header-height);
 
 	&.hidden {
 		top: -62px;
@@ -66,9 +67,56 @@ header {
 
 	.navbar-toggler {
 		border: none;
+		padding: 0.35rem;
+		outline: none;
 
 		&:focus {
 			box-shadow: none;
+		}
+
+		.custom-toggler-icon {
+			position: relative;
+			display: inline-block;
+			width: 28px;
+			height: 2px;
+			background-color: var(--bs-secondary);
+			transition: transform 0.25s ease, background-color 0.25s ease;
+			background-image: none;
+			border-radius: 1px;
+		}
+
+		.custom-toggler-icon::before,
+		.custom-toggler-icon::after {
+			content: "";
+			position: absolute;
+			left: 0;
+			width: 100%;
+			height: 2px;
+			background-color: var(--bs-secondary);
+			border-radius: 1px;
+			transition: transform 0.25s ease, top 0.25s ease;
+		}
+
+		.custom-toggler-icon::before {
+			top: -8px;
+		}
+
+		.custom-toggler-icon::after {
+			top: 8px;
+		}
+
+		&:not(.collapsed) .custom-toggler-icon {
+			transform: rotate(45deg);
+		}
+
+		&:not(.collapsed) .custom-toggler-icon::before {
+			top: 0;
+			transform: rotate(90deg);
+		}
+
+		&:not(.collapsed) .custom-toggler-icon::after {
+			top: 0;
+			transform: rotate(90deg);
 		}
 	}
 
@@ -113,6 +161,10 @@ header {
 }
 
 main {
+	section {
+		scroll-margin-top: var(--header-height);
+	}
+
 	#hero {
 		/* height: calc(100dvh - 77px); */
 		/* aspect-ratio: 16 / 9; */
@@ -169,33 +221,44 @@ main {
 	#quemsomos {
 		padding: 100px 0;
 
-		.title {
-			font-size: 4.5rem;
-			font-weight: 300;
-			line-height: 0.7;
+		.container {
+			gap: 20px;
+		}
 
-			span {
-				opacity: 0;
-				transform: translateX(-50px);
-				transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-				display: block;
-			}
+		.title-container {
+			flex: 1;
+			position: sticky;
+			top: 100px;
 
-			.emphasis {
-				font-size: 8rem;
-				transform: translateX(50px);
-			}
+			.title {
+				font-size: 4.5rem;
+				font-weight: 300;
+				line-height: 0.7;
 
-			&.animate {
 				span {
-					opacity: 1;
-					transform: translateX(0);
+					opacity: 0;
+					transform: translateX(-50px);
+					transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+					display: block;
+				}
+
+				.emphasis {
+					font-size: 8rem;
+					transform: translateX(50px);
+				}
+
+				&.animate {
+					span {
+						opacity: 1;
+						transform: translateX(0);
+					}
 				}
 			}
 		}
 
 		.text {
 			font-size: 1.25rem;
+			flex: 1;
 
 			p {
 				opacity: 0;
@@ -618,11 +681,14 @@ footer {
 			}
 		}
 		#quemsomos {
-			.title {
-				font-size: 3.5rem;
+			.title-container {
+				position: static;
+				.title {
+					font-size: 3rem;
 
-				.emphasis {
-					font-size: 6rem;
+					.emphasis {
+						font-size: 5.5rem;
+					}
 				}
 			}
 			.flag-logo {
@@ -714,13 +780,6 @@ footer {
 	.container {
 		--bs-gutter-x: 2rem;
 	}
-	/* header {
-		.navbar-brand {
-			img {
-				width: 80px;
-			}
-		}
-	} */
 	main {
 		.flag-logo-mobile {
 			top: -58px;
